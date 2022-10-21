@@ -13,8 +13,8 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     int type;
-    EditText edtPad, edtLt;
-    TextView txtDisplayLuas, txtDisplayKeliling;
+    EditText btnNilai1, btnNilai2;
+    TextView txtTampilLuas, txtTampilKeliling;
     Button btnPersegi, btnSegitiga, btnLingkaran;
 
     @Override
@@ -26,43 +26,44 @@ public class MainActivity extends AppCompatActivity {
         btnSegitiga = findViewById(R.id.btn_segitiga);
         btnLingkaran = findViewById(R.id.btn_lingkaran);
 
-        edtPad = findViewById(R.id.btn_nilai1);
-        edtLt = findViewById(R.id.btn_nilai2);
+        btnNilai1 = findViewById(R.id.btn_nilai1);
+        btnNilai2
+                = findViewById(R.id.btn_nilai2);
 
-        txtDisplayLuas = findViewById(R.id.txt_display_luas);
-        txtDisplayKeliling = findViewById(R.id.txt_display_keliling);
+        txtTampilLuas = findViewById(R.id.txt_tampil_luas);
+        txtTampilKeliling = findViewById(R.id.txt_tampil_keliling);
 
         btnPersegi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                findLuasKeliling(1);
+                cariLuasdanKeliling(1);
             }
         });
 
         btnSegitiga.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                findLuasKeliling(2);
+                cariLuasdanKeliling(2);
             }
         });
 
         btnLingkaran.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                findLuasKeliling(3);
+                cariLuasdanKeliling(3);
             }
         });
     }
 
-    public void findLuasKeliling(int type) {
+    public void cariLuasdanKeliling(int type) {
         double num1, num2, r, pi = Math.PI, luas, keliling;
 
-        if (edtPad.getText().toString().isEmpty() || edtLt.getText().toString().isEmpty()) {
+        if (btnNilai1.getText().toString().isEmpty() || btnNilai2.getText().toString().isEmpty()) {
             num1 = 0;
             num2 = 0;
         } else {
-            num1 = Double.parseDouble(edtPad.getText().toString());
-            num2 = Double.parseDouble(edtLt.getText().toString());
+            num1 = Double.parseDouble(btnNilai1.getText().toString());
+            num2 = Double.parseDouble(btnNilai2.getText().toString());
         }
 
         r = num1 / 2;
@@ -110,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tampilLuasKeliling(double luas, double keliling) {
-        txtDisplayLuas.setText(Double.toString(luas));
-        txtDisplayKeliling.setText(Double.toString(keliling));
+        txtTampilLuas.setText(Double.toString(luas));
+        txtTampilKeliling.setText(Double.toString(keliling));
     }
 }
